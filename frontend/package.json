@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite && react-compress ",
-    "build": "vite build",
+    "dev": "concurrently  \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:frontend":"vite",
+    "start:backend":"cd ../backend &&  pipenv run gunicorn -w 4 -b 0.0.0.0:5000 app:app",
+    "build": "vite build && react-compress",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -21,6 +23,7 @@
     "@reduxjs/toolkit": "^2.2.3",
     "@trendmicro/react-sidenav": "^0.5.0",
     "apexcharts": "^3.44.0",
+    "concurrently": "^8.2.2",
     "date-fns": "^2.30.0",
     "history": "^5.3.0",
     "lodash": "^4.17.21",
