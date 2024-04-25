@@ -1,3 +1,23 @@
-# Lost and Found
+![strathmoreLogotwo](https://github.com/AzharAhmed-bot/strathlostandfound/assets/126657393/2ff17ab2-6268-43a2-87b0-5606b35fd7ab)
+# Strathmore Lost and Found System
+<h3>Hey there ✨! Welcome to the Strathmore Lost and Found System, your go-to hub for reuniting lost items with their owners. Our open-source repository fosters a collaborative spirit, empowering users  to contribute to the collective effort of restoring lost connections.</h3><br/>
+<h4>We facilitate the swift and seamless return of lost items to their rightful owners, fostering a sense of community and connection.</h4>
 
-![Lost and Found GIF](https://www.google.com/url?sa=i&url=https%3A%2F%2Fmoot.typepad.com%2F.a%2F6a00d8341c01ff53ef01901c9da0d1970b-popup&psig=AOvVaw26b-8P4jFwsTIbG_nRvnyj&ust=1714136525147000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPiMwai23YUDFQAAAAAdAAAAABAE)
+# Tech Stack
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) 
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) 
+![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) 
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+ ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+## **Usage**
+To get  Strathmore Lost and Found  running locally:
+
+
+
+
