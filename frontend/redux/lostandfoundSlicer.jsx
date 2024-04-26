@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchLostAndFound = createAsyncThunk(
   "lostandfound/fetch",
   async (endpoint) => {
-    const response = await fetch(`http://localhost:5000/${endpoint}`, {
+    const response = await fetch(`http://localhost:5000${endpoint}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
