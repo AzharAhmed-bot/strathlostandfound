@@ -45,8 +45,8 @@ cd strathlostandfound/frontend
   **Note that its important to always sync your forked repository with the main one to stay up to date**
   ```bash
   #Run this commands to update the changes to your local machine
- git fetch --all
- git pull
+  git fetch --all
+  git pull
   ```
 
 
