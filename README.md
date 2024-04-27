@@ -17,7 +17,28 @@
 
 ## **Usage**
 To get  Strathmore Lost and Found  running locally:
-
-
+1. Fork the repository
+2. Clone the repostory in to your local machine
+```bash
+git clone https://github.com/your-username/strathlostandfound.git
+```
+3. Change your current working directory
+```bash
+cd strathlostandfound/frontend
+```
+4. Now there are two ways to get the application in your local machine:
+ - Run both backend and frontend concurrently
+   ```bash
+   npm run dev
+   ```
+- If you wish to make modifications on the backend you can run the backend separately using
+  ```bash
+  #To start the backend
+  npm start:backend
+  ```
+  ```bash
+  #To start frontend
+  npm start:fronted
+  ```
 
 
