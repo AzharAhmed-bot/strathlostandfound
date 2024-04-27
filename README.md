@@ -40,5 +40,13 @@ cd strathlostandfound/frontend
   #To start frontend
   npm start:fronted
   ```
+  ## Contributions
+  Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. <br/>
+  **Note that its important to always sync your forked repository with the main one to stay up to date**
+  ```bash
+  #Run this commands to update the changes to your local machine
+ git fetch --all
+ git pull
+  ```
 
 
