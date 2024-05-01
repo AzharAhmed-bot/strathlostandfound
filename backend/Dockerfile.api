@@ -1,0 +1,20 @@
+# syntax=docker/dockerfile:1
+FROM python:3.10-slim-buster
+
+WORKDIR /strathlostandfound/backend/
+
+COPY . /strathlostandfound/backend/
+
+# Install pipenv
+RUN pip install pipenv
+
+# Explicitly set Python version for pipenv
+RUN pipenv --python 3.10
+
+# Install dependencies
+RUN pipenv install alembic aniso8601 bcrypt blinker cachelib certifi click cloudinary Flask Flask-Bcrypt Flask-Cors Flask-JWT-Extended Flask-Mail Flask-Migrate Flask-RESTful Flask-Session Flask-SQLAlchemy Flask-Uploads greenlet gunicorn itsdangerous Jinja2 Mako MarkupSafe msgspec packaging PyJWT python-dotenv pytz six SQLAlchemy SQLAlchemy-serializer typing_extensions urllib3 Werkzeug
+
+
+WORKDIR /strathlostandfound/backend/
+# Use gunicorn as the start command
+CMD ["pipenv","run","gunicorn", "--bind", ":5000", "app:app"]
