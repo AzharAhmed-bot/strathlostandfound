@@ -3,6 +3,9 @@
 <h3>Hey there ✨! Welcome to the Strathmore Lost and Found System, your go-to hub for reuniting lost items with their owners. Our open-source repository fosters a collaborative spirit, empowering users  to contribute to the collective effort of restoring lost connections.</h3><br/>
 <h4>We facilitate the swift and seamless return of lost items to their rightful owners, fostering a sense of community and connection.</h4>
 
+
+![Screenshot 2024-04-28 192103](https://github.com/AzharAhmed-bot/strathlostandfound/assets/126657393/0ef4f727-cfdf-43d4-a7f8-fca63fa23235)
+
 # Tech Stack
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -17,7 +20,36 @@
 
 ## **Usage**
 To get  Strathmore Lost and Found  running locally:
-
-
+1. Fork the repository
+2. Clone the repostory in to your local machine
+```bash
+git clone https://github.com/your-username/strathlostandfound.git
+```
+3. Change your current working directory
+```bash
+cd strathlostandfound/frontend
+```
+4. Now there are two ways to get the application in your local machine:
+ - Run both backend and frontend concurrently
+   ```bash
+   npm run dev
+   ```
+- If you wish to make modifications on the backend you can run the backend separately using
+  ```bash
+  #To start the backend
+  npm start:backend
+  ```
+  ```bash
+  #To start frontend
+  npm start:fronted
+  ```
+  ## Contributions
+  Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. <br/>
+  **Note that its important to always sync your forked repository with the main one to stay up to date**
+  ```bash
+  #Run this commands to update the changes to your local machine
+  git fetch --all
+  git pull
+  ```
 
 
