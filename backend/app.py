@@ -5,7 +5,7 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 from flask_session import Session
 from flask_mail import Message,Mail
-from models import db, User, Claim, History, Review,Item_Lost,Category,Admin,email_pattern,phone_pattern,Review
+from models import db, User, Claim, Review,Item_Lost,Category,email_pattern,phone_pattern,Review
 import os
 from dotenv import load_dotenv
 import re
