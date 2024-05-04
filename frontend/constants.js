@@ -1,3 +1,4 @@
+import AdminNonExistingClaim from "./src/components/Admin/AdminNonExistingClaim";
 
 // constants.js
 const content = {
@@ -134,6 +135,17 @@ const content = {
       claimLabel:"Make a claim",
       action:"Wanna Make another claim?",
       result:"Visit Home"
+    },
+    AdminNonExistingClaim:{
+      claimTitle:"Claimed by: ",
+      claimIdTitle:"Claime ID: ",
+      descriptionTitle:"Description Proof: ",
+      categoryTitle:"Category: ",
+      locationTitle:"Location: ",
+      statusTitle:"Status: ",
+      claimButton:"Claim",
+      rejectButton:"Reject",
+      deleteButton:"Delete"
     },
     AdminPanel:{
       postTitle:"Posted By: ",
