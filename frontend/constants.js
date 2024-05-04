@@ -138,6 +138,7 @@ const content = {
     },
     AdminNonExistingClaim:{
       claimTitle:"Claimed by: ",
+      itemTitle:"Item name: ",
       claimIdTitle:"Claime ID: ",
       descriptionTitle:"Description Proof: ",
       categoryTitle:"Category: ",
