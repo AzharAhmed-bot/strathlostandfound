@@ -2,7 +2,8 @@
 import AdminNavProfile from "./AdminNavProfile";
 import content from "../../../constants";
 import {getUserName,getItemName,getCategoryName } from "../../services/getters";
-import deleteByValue from "../../services/stateUpdaters/delete";
+import { handleNonExistingClaim,onClose } from "../../services/Claims/handleNonExistingClaim";
+import handleNonExistingDeleteClaim from "../../services/Claims/handleNonExistingDeleteClaim";
 import defaultImage from "../../assets/default.webp";
 import {toast, Toaster} from "react-hot-toast";
 import {useState,useEffect} from "react";
@@ -21,46 +22,45 @@ const AdminNonExistingClaim = ({ claims ,users,categories,items}) => {
       setNonExistingClaim(claims && claims.filter((claim) => claim.item_id === null));
     }, [claims]);
 
-     function handleNonExistingRejectClaim(data) {
-      if(data.Status==="Inactive"){
-        toast.error("Item already claimed")
-      }
-    }
-    
-     function handleNonExistingDeleteClaim(data){
+    function handleNonExistingRejectClaim(data) {
       
+      if(data.Status=="Inactive"){
+        toast.error("Claim already rejected");
+        return 0;
+      }
       fetch(`http://localhost:5000/claims/${data.id}`, {
-        method: 'DELETE',
+        method: 'PATCH',
         headers: {
-          'Content-Type': 'Application/json',
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ Status: "Inactive" }), 
       })
         .then((resp) => resp.json())
-        .then(() => {
-          toast.success("Claim deleted Successfully!")
-          console.log('Claim deleted successfully');
-          deleteByValue(data,setNonExistingClaim);
-         
+        .then((updatedClaim) => {
+          // Update the claim status in the local state
+          setNonExistingClaim(prevClaims => {
+            return prevClaims.map(claim => {
+              if (claim.id === updatedClaim.id) {
+                return { ...claim, Status: updatedClaim.Status };
+              }
+              return claim;
+            });
+          });
+          toast.success("Claim rejected Successfully!");
+          console.log('Claim rejected successfully');
         })
         .catch((error) => console.log(error));
-      }
-     
+    }
+    
+    
+   
 
-       function handleClaim(claim){
-        
-        setAssociation(claim.id)
-        setisOpen(!isOpen)
-       }
-
-       function onClose(){
-        setisOpen(false);
-       }
 
       return (
         <div className="bg-gray-100 min-h-screen pt-16">
         <AdminNavProfile />
         <Toaster toastOptions={{ duration: 2000 }} />
-        <ConfirmationDialog isOpen={isOpen} onClose={onClose} association={association} />
+        <ConfirmationDialog isOpen={isOpen} onClose={()=>onClose(setisOpen)} association={association} />
   <div className="container mx-auto mt-12">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {nonExistingClaim &&
@@ -103,7 +103,7 @@ const AdminNonExistingClaim = ({ claims ,users,categories,items}) => {
                 </div>
             <div className="flex space-x-2">
               <button
-                onClick={() => handleClaim(claim)}
+                onClick={() => handleNonExistingClaim(claim,setAssociation,isOpen,setisOpen)}
                 className="bg-green-600 text-white rounded-md px-4 py-2 hover:bg-green-700"
               >
                 <FaThumbtack className="inline-block mr-2" />{content.AdminNonExistingClaim.claimButton}
@@ -115,7 +115,7 @@ const AdminNonExistingClaim = ({ claims ,users,categories,items}) => {
                 <FaTimesCircle className="inline-block mr-2" />{content.AdminNonExistingClaim.rejectButton} 
               </button>
               <button
-                onClick={() => handleNonExistingDeleteClaim(claim)}
+                onClick={() => handleNonExistingDeleteClaim(claim,setNonExistingClaim,toast)}
                 className="bg-red-600 text-white rounded-md px-4 py-2 hover:bg-red-700"
               >
                 <FaTrash className="inline-block mr-2" />{content.AdminNonExistingClaim.deleteButton} 
