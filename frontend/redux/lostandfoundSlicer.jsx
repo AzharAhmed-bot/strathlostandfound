@@ -34,12 +34,24 @@ export const postQuestion = createAsyncThunk(
 const initialState = {
   isLoading: false,
   data: [],
+  claims:[],
   error: null,
 };
 
 const lostAndFoundSlice = createSlice({
   name: "lostAndFound",
   initialState,
+  reducers:{
+    rejectClaim:(state,action)=>{
+      const{claimId,newData}=action.payload;
+      state.claims=state.claims.map(claim=>{
+        if(claim.id==claimId){
+          return {...claim,...newData};
+        }
+        return claim;
+      })
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchLostAndFound.pending, (state) => {
       state.isLoading = true;
@@ -65,5 +77,8 @@ const lostAndFoundSlice = createSlice({
     });
   },
 });
+
+
+export const { rejectClaim } = lostAndFoundSlice.actions;
 
 export default lostAndFoundSlice.reducer;

@@ -352,15 +352,15 @@ class Lost_ItemsBy_ID(Resource):
             return make_response(jsonify({"message" : f"item {id} is not available"}),404)
         return make_response(jsonify(review.to_dict()),200)
     def patch(self,id):
-        review=Item_Lost.query.filter_by(id=id).first()
+        item=Item_Lost.query.filter_by(id=id).first()
         data=request.get_json()
-        if not review:
+        if not item:
             return make_response(jsonify({"message" : f"item {id} is not available"}),404)
         for attr,value in data.items():
-            setattr(review,attr,value)
-        db.session.add(review)
+            setattr(item,attr,value)
+        db.session.add(item)
         db.session.commit()
-        return make_response(jsonify({"message" : f"item {id}'s information updated"}),200)
+        return make_response(jsonify({"item" : item.to_dict()}),200)
     
     def delete(self,id):
         item=Item_Lost.query.filter_by(id=id).first()
@@ -437,7 +437,7 @@ class ClaimingBy_ID(Resource):
             setattr(claim,attr,value)
         db.session.add(claim)
         db.session.commit()
-        return make_response(jsonify({"message" : f"Claim {id}'s information updated"}),200)
+        return make_response(jsonify({"claim" : claim.to_dict()}),200)
     
     def delete(self,id):
         claim=Claim.query.filter_by(id=id).first()
@@ -445,7 +445,7 @@ class ClaimingBy_ID(Resource):
             return make_response(jsonify({"message" : f"Claim {id} is not available"}),404)
         db.session.delete(claim)
         db.session.commit()
-        return make_response(jsonify({"message" : f"Claim {id} has been sucessfully deleted"}),200)
+        return make_response(jsonify({"claim" : f"Claim {id} has been sucessfully deleted"}),200)
 
 api.add_resource(ClaimingBy_ID, '/claims/<int:id>')
 

@@ -13,11 +13,14 @@ import { fetchLostAndFound } from '../../../redux/lostandfoundSlicer';
 import { getCategoryName,getUserName,getUserEmail } from '../../services/getters';
 import { useAppContext } from '../../AppContext';
 import handleDeleteItem from '../../services/handleDeleteItem';
+import handleDeleteClaim from '../../services/Claims/handleDeleteClaim';
+import handleRejectClaim from '../../services/Claims/handleRejectClaim';
+import handleAdminClaim from '../../services/Claims/handleAdminClaim';
 
 const defaultUserImage = defaultImage; // Provide the path to your default image.
 
-const AdminPanel = ({getItem,getClaim }) => {
-  const {items,claims,categories,setItems}=useAppContext();
+const AdminPanel = () => {
+  const {items,claims,setClaims,categories,setItems}=useAppContext();
   const dispatch =useDispatch();
   const [users,setUsers]=useState("")
   const [claimsVisibility, setClaimsVisibility] = useState({});
@@ -37,88 +40,8 @@ const AdminPanel = ({getItem,getClaim }) => {
   },[dispatch])
 
 
- function handleRejectClaim(data) {
-
-   const claimPatchData={
-    Status:"Inactive"
-  }
-       fetch(`http://localhost:5000/claims/${data.id}`, {
-         method: 'PATCH',
-         headers: {
-           'Content-Type': 'Application/json',
-         },
-         body:JSON.stringify(claimPatchData)
-       })
-         .then((resp) => resp.json())
-         .then(() => {
-           toast.success("Claim rejected Successfully due to invalid owner!")
-           console.log('Claim deleted successfully');
-           getClaim();
-         })
-         .catch((error) => console.log(error));
- }
- function handleDeleteClaim(data){
-  fetch(`http://localhost:5000/claims/${data.id}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'Application/json',
-    }
-  })
-    .then((resp) => resp.json())
-    .then(() => {
-      toast.success("Claim rejected Successfully due to invalid owner!")
-      console.log('Claim deleted successfully');
-      getClaim();
-    })
-    .catch((error) => console.log(error));
- }
- 
- 
-
-   function handleClaim(data,item) {
-       
-       const userEmail = getUserEmail(data.user_id);
-           if(item.Status==="Inactive"){
-               toast.error("You have already sent a claim for this Item You cant send twice.You can go ahead and delete the claim")
-           }
-   else{
-     
-     console.log(`Clicked claim by user of email ${userEmail}`);
-    
-           const patchData={
-               Status:"Inactive"
-           }
-           fetch(`http://localhost:5000/lost_items/${data.item_id}`,{
-               method:"PATCH",
-               headers:{
-                   "Content-Type":"Application/json"
-               },
-               body:JSON.stringify(patchData)
-           })
-           .then(resp=>resp.json())
-           .then(()=>{
-               getItem()
-               console.log("Item status updated successfully")})
-           toast.success("Email has been sent successfully")
-            const claimPatchData={
-              Status:"Active"
-            }
-         fetch(`http://localhost:5000/claims/${data.id}`,{
-               method:"PATCH",
-               headers:{
-                   "Content-Type":"Application/json"
-               },
-               body:JSON.stringify(claimPatchData)
-           })
-           .then(resp=>resp.json())
-           .then(()=>{
-               getClaim()
-               console.log("Item status updated successfully")})
-       }
-   }
-   
   
-   const itemAndClaims = items && items.map((item) => {
+    const itemAndClaims = items && items.map((item) => {
     const itemClaims = claims && claims.filter((claim) => claim.item_id === item.id);
 
     
@@ -202,21 +125,21 @@ const AdminPanel = ({getItem,getClaim }) => {
                   </p>
                 </div>
                 <button
-                  onClick={() => handleClaim(claim,item)}
+                  onClick={() => handleAdminClaim(claim,item,items,claims,setItems,setClaims,toast)}
                   className="bg-gray-600 text-white rounded-md px-4 py-2 mt-2 hover:bg-gray-700 flex items-center gap-4"
                 >
                   <FaCheckCircle/>
                   Mark as Claimed
                 </button>
                 <button
-                  onClick={() => handleRejectClaim(claim)}
+                  onClick={() => handleRejectClaim(claim,claims,setClaims,toast)}
                   className="bg-yellow-600 hover:bg-yellow-500 pl-8 text-white rounded-md px-4 py-2 mt-2 flex items-center gap-4 "
                 >
                   <MdCancel/>
                   Reject Claim
                 </button>
                 <button
-                  onClick={() => handleDeleteClaim(claim)}
+                  onClick={() => handleDeleteClaim(claim,setClaims,toast)}
                   className="bg-red-600 hover:bg-red-500 pl-8 text-white rounded-md px-4 py-2 mt-2 flex items-center gap-4 "
                 >
                   <FaTrashAlt/>

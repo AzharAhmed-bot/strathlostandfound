@@ -1,14 +1,10 @@
-function updateByValue(updatedData, setState) {
-    setState(prevState => {
-      return prevState.map(claim => {
-        if (claim.id === updatedData.id) {
-          // Merge the updated data with the existing claim
-          return { ...claim, ...updatedData };
-        }
-        return claim;
-      });
-    });
-  }
-  
-  export default updateByValue;
-  
+
+
+export default function updateByValue(data, updatedData){
+  return data.map(d => {
+    if (d.id === updatedData.id) {
+      return { ...d, ...updatedData };
+    }
+    return d;
+  });
+};
