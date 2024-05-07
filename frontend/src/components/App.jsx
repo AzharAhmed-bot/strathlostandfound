@@ -67,9 +67,12 @@ const getItems =useCallback(() => items,[items]);
  * A function that returns the claims state variable.
  */
 const getClaims = useCallback(() => claims, [claims]);
+
+
+
 // User info needed in AdminPanel ,Forget and Reset Password
 // To address the potential performance issue with the routes array being recreated on every render
-const routes =useMemo(()=> [
+const routes = [
     { path: "/", element: <LandingPage /> },
     { path: '/login', element: <Login/> },
     { path: '/signup', element: <SignIn /> },
@@ -82,11 +85,11 @@ const routes =useMemo(()=> [
     { path:'/home/dashboard/statistics',element:<PrivateRoute>  <ItemDashboard items={items} claims={claims} categories={categories}/></PrivateRoute>},
     { path:'/home/dashboard/faq',element: <PrivateRoute> <FaqDashboard reviews={reviews}/></PrivateRoute>},
     { path: '/nonexisting-claim', element: <PrivateRoute><NonExistingClaim categories={categories} /></PrivateRoute> },
-    { path: '/admin', element: <PrivateRoute><AdminPanel items={items} claims={claims}  categories={categories}  getItem={getItems} getClaim={getClaims} /></PrivateRoute> },
+    { path: '/admin', element: <PrivateRoute><AdminPanel/></PrivateRoute> },
     { path: "/Adminnon-existingClaim", element: <PrivateRoute><AdminNonExistingClaim claims={claims} items={items} getClaim={getClaims} categories={categories}  /></PrivateRoute> },
     { path: '/forgot', element: <Forgot  /> },
     { path: '/reset/:id', element: <ResetPassowrd /> },
-],[items, categories, claims,reviews, getItems, getClaims]);
+];
 
  
 

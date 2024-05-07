@@ -11,10 +11,13 @@ import { MdCancel } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { fetchLostAndFound } from '../../../redux/lostandfoundSlicer';
 import { getCategoryName,getUserName,getUserEmail } from '../../services/getters';
+import { useAppContext } from '../../AppContext';
+import handleDeleteItem from '../../services/handleDeleteItem';
 
 const defaultUserImage = defaultImage; // Provide the path to your default image.
 
-const AdminPanel = ({ items, claims,getItem,getClaim }) => {
+const AdminPanel = ({getItem,getClaim }) => {
+  const {items,claims,categories,setItems}=useAppContext();
   const dispatch =useDispatch();
   const [users,setUsers]=useState("")
   const [claimsVisibility, setClaimsVisibility] = useState({});
@@ -32,21 +35,7 @@ const AdminPanel = ({ items, claims,getItem,getClaim }) => {
     }
     fetchUsers()
   },[dispatch])
-  
-  function handleDeleteItem(data){
-    console.log(`Clicked item with id ${data.id}`)
-    fetch(`http://localhost:5000/lost_items/${data.id}`,{
-     method:"DELETE",
-     headers:{
-         "Content-Type":"Application/json"
-     }
-    })
-    .then((resp)=>resp.json())
-    .then(()=>{
-     getItem()
-     console.log("Item Deleted successfully")  
- })
- }
+
 
  function handleRejectClaim(data) {
 
@@ -150,7 +139,7 @@ const AdminPanel = ({ items, claims,getItem,getClaim }) => {
           <div className='flex items-center gap-2'><FaIdCard/><h2 className="text-black text-lg font-medium font-inter">Lost Item ID: {item.id}</h2></div>
           <div className='flex items-center gap-2'><FaTag /><h2 className="text-black text-lg font-medium font-inter"> Lost Item: {item.name}</h2></div>
           <div className='flex items-center gap-2'><FaUser /><p className="text-black text-lg font-medium font-inter"> Posted By: {getUserName(item.user_id,users)}</p></div>
-          <div className='flex items-center gap-2'><FaInfoCircle /> <p className="text-black text-lg font-medium font-inter">Category: {getCategoryName(item.category_id)}</p></div>
+          <div className='flex items-center gap-2'><FaInfoCircle /> <p className="text-black text-lg font-medium font-inter">Category: {getCategoryName(item.category_id,categories)}</p></div>
           <div className='flex items-center gap-2'><FaMapMarkerAlt /><p className="text-black text-lg font-medium font-inter"> Location: {item.location}</p></div>
           <div className='flex items-center gap-2'><FaCalendarAlt /><p className="text-black text-lg font-medium font-inter"> Lost Date: {item.date}</p></div>
           <div className='flex items-center gap-2'><FaAlignLeft /><p className="text-black text-lg font-medium font-inter"> Description: {item.description}</p></div>
@@ -168,7 +157,7 @@ const AdminPanel = ({ items, claims,getItem,getClaim }) => {
           </div>
 
             <button
-            onClick={() => handleDeleteItem(item)}
+            onClick={() => handleDeleteItem(item,setItems,toast)}
             className="bg-red-600 flex items-center gap-2 text-white rounded-md px-4 py-2 mt-2 hover:bg-red-700"
           >
             <FaTrashAlt /> Delete Item
