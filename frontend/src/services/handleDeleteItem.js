@@ -1,6 +1,7 @@
 import deleteByValue from "./stateUpdaters/delete";
 
-function handleDeleteItem(data,setItems,toast){
+
+function handleDeleteItem(data,setItems,setClaims,toast){
     
     
     fetch(`http://localhost:5000/lost_items/${data.id}`,{

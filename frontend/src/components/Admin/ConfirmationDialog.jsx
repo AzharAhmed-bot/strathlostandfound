@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import  { useState } from "react";
 
-
 const ConfirmationDialog = ({ isOpen, onClose ,association}) => {
   const [inputValue, setInputValue] = useState("");
 

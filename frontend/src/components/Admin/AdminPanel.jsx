@@ -80,7 +80,7 @@ const AdminPanel = () => {
           </div>
 
             <button
-            onClick={() => handleDeleteItem(item,setItems,toast)}
+            onClick={() => handleDeleteItem(item,setItems,setClaims,toast)}
             className="bg-red-600 flex items-center gap-2 text-white rounded-md px-4 py-2 mt-2 hover:bg-red-700"
           >
             <FaTrashAlt /> Delete Item

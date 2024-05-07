@@ -121,7 +121,7 @@ class Claim(db.Model, SerializerMixin):
     id=db.Column(db.Integer,primary_key=True)
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
     category_id=db.Column(db.Integer,db.ForeignKey('categories.id'))
-    item_id=db.Column(db.Integer,db.ForeignKey('items_lost.id'))
+    item_id=db.Column(db.Integer,db.ForeignKey('items_lost.id'),default=0)
     location = db.Column(db.String, nullable=False, default="Unknown")
     Status=db.Column(db.String,default="Pending")
     image_proof=db.Column(db.String(700))
