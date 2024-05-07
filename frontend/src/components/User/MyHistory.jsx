@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import NavProfile from "./NavProfile";
+import { useAppContext } from "../../AppContext";
 import { MdCheck, MdCancel, MdHourglassEmpty, MdLocationOn, MdDescription } from "react-icons/md"; 
 import { FaInfo } from "react-icons/fa";
 
 
-export default function MyHistory({ claims, categories, items }) {
-  const defaultUserImage =
-    "https://cdn.pixabay.com/photo/2015/11/03/09/09/magnifying-glass-1020142_1280.jpg";
+export default function MyHistory() {
+  const {claims,categories,items}=useAppContext();
+  const defaultUserImage ="https://cdn.pixabay.com/photo/2015/11/03/09/09/magnifying-glass-1020142_1280.jpg";
 
   const user_id = sessionStorage.getItem("user_id");
   const user_idInt = parseInt(user_id);

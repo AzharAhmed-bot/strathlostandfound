@@ -33,36 +33,8 @@ function App() {
   const [reviews, setReviews] = useState("");
   const [claims, setClaims] = useState("");
 
-useEffect(() => {
-   
-    // Inside the useEffect hook
-    const fetchData = async () => {
-      try {
-        const [categoriesData, itemsData, claimsData,reviewData] = await Promise.all([
-          dispatch(fetchLostAndFound("/categories")),
-          dispatch(fetchLostAndFound("/lost_items")),
-          dispatch(fetchLostAndFound("/claims")),
-          dispatch(fetchLostAndFound("/reviews"))
-      
-        ]);
-  
-          setCategories(categoriesData.payload);
-          setItems(itemsData.payload);
-          setClaims(claimsData.payload);
-          setReviews(reviewData.payload);
-        
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-  fetchData();
-}, [dispatch]);
 
 
-/**
- * A function that returns the items state variable.
- */
-const getItems =useCallback(() => items,[items]); 
 /**
  * A function that returns the claims state variable.
  */
@@ -76,17 +48,17 @@ const routes = [
     { path: "/", element: <LandingPage /> },
     { path: '/login', element: <Login/> },
     { path: '/signup', element: <SignIn /> },
-    { path: '/faq', element: <AboutPage reviews={reviews}/> },
-    { path: '/home', element: <Home items={items} categories={categories}  /> },
-    { path: '/home/post', element: <PrivateRoute><PostItem categories={categories} /></PrivateRoute> },
-    { path: '/home/claim', element: <PrivateRoute><MyClaimcard categories={categories} items={items} /></PrivateRoute> },
-    { path: '/home/myHistory', element: <PrivateRoute><MyHistory claims={claims} categories={categories} items={items} /></PrivateRoute> },
-    { path:'/home/dashboard/user',element:<PrivateRoute> <UserDashboard    /></PrivateRoute>},
-    { path:'/home/dashboard/statistics',element:<PrivateRoute>  <ItemDashboard items={items} claims={claims} categories={categories}/></PrivateRoute>},
-    { path:'/home/dashboard/faq',element: <PrivateRoute> <FaqDashboard reviews={reviews}/></PrivateRoute>},
-    { path: '/nonexisting-claim', element: <PrivateRoute><NonExistingClaim categories={categories} /></PrivateRoute> },
+    { path: '/faq', element: <AboutPage/> },
+    { path: '/home', element: <Home/> },
+    { path: '/home/post', element: <PrivateRoute><PostItem/></PrivateRoute> },
+    { path: '/home/claim', element: <PrivateRoute><MyClaimcard /></PrivateRoute> },
+    { path: '/home/myHistory', element: <PrivateRoute><MyHistory/></PrivateRoute> },
+    { path:'/home/dashboard/user',element:<PrivateRoute> <UserDashboard/></PrivateRoute>},
+    { path:'/home/dashboard/statistics',element:<PrivateRoute><ItemDashboard/></PrivateRoute>},
+    { path:'/home/dashboard/faq',element: <PrivateRoute> <FaqDashboard/></PrivateRoute>},
+    { path: '/nonexisting-claim', element: <PrivateRoute><NonExistingClaim/></PrivateRoute> },
     { path: '/admin', element: <PrivateRoute><AdminPanel/></PrivateRoute> },
-    { path: "/Adminnon-existingClaim", element: <PrivateRoute><AdminNonExistingClaim claims={claims} items={items} getClaim={getClaims} categories={categories}  /></PrivateRoute> },
+    { path: "/Adminnon-existingClaim", element: <PrivateRoute><AdminNonExistingClaim /></PrivateRoute> },
     { path: '/forgot', element: <Forgot  /> },
     { path: '/reset/:id', element: <ResetPassowrd /> },
 ];

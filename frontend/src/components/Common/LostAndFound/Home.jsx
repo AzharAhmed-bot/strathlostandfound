@@ -9,11 +9,12 @@ import AdminNavProfile from "../../Admin/AdminNavProfile";
 import toast, { Toaster } from "react-hot-toast";
 import handleClaim from "../../../services/Claims/handleClaim";
 import { fetchLostAndFound } from "../../../../redux/lostandfoundSlicer";
+import { useAppContext } from "../../../AppContext";
 import { getCategoryName, getUserName, getItemName } from "../../../services/getters";
 import content from "../../../../constants";
 
-export default function Home({ items, categories }) {
-  
+export default function Home() {
+  const{items,categories}=useAppContext();
   const dispatch = useDispatch();
   const [users, setUsers] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
@@ -116,7 +117,7 @@ export default function Home({ items, categories }) {
                   <p>Claimed</p>
                 </div>
               ) : (
-                <button onClick={() => handleClaim(item,navigate,getCategoryName,getItemName,categories,toast)} className="mt-4 w-1/2 bg-green-500  text-white py-2 px-4 rounded-full hover:bg-green-600">
+                <button onClick={() => handleClaim(items,item,navigate,getCategoryName,getItemName,categories,toast)} className="mt-4 w-1/2 bg-green-500  text-white py-2 px-4 rounded-full hover:bg-green-600">
                   Claim
                 </button>
               )}

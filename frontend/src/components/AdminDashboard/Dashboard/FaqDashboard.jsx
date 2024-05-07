@@ -2,8 +2,11 @@
 import AdminNavProfile from "../../Admin/AdminNavProfile";
 import FaqStatisticCard from "../StatitisticCards/FaqStatisticCard";
 import FaqAnsZone from "../Zones/FaqAnsZone";
+import { useAppContext } from "../../../AppContext";
 
-const FaqDashboard=({reviews})=>{
+const FaqDashboard=()=>{
+  const {reviews}=useAppContext();
+
   //Function to calcultate unanswered questions
   const getUnansweredQuestions = () => reviews && reviews.filter((q)=>q.answer===null).length;
   // Function to calculate answered questions

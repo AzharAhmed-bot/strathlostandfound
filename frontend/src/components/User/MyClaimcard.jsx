@@ -5,7 +5,8 @@ import { FaFileImage,FaMapMarker } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast";
 import { CgSpinner } from "react-icons/cg";
 import { Link } from "react-router-dom";
-import { FaThumbtack, FaInfo} from "react-icons/fa"
+import { FaThumbtack, FaInfo} from "react-icons/fa";
+import { useAppContext } from "../../AppContext";
 import NavProfile from "./NavProfile";
 import claim from "@assets/claim.webp";
 

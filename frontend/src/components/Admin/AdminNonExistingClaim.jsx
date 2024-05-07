@@ -9,10 +9,12 @@ import {toast, Toaster} from "react-hot-toast";
 import {useState,useEffect} from "react";
 import { FaInfo, FaThumbtack, FaTrash, FaTimesCircle, FaCheckCircle,FaClock, FaAlignLeft, FaMapMarkerAlt } from 'react-icons/fa'
 import ConfirmationDialog from "./ConfirmationDialog";
+import { useAppContext } from "../../AppContext";
 const defaultUserImage =defaultImage;
  
 
-const AdminNonExistingClaim = ({ claims ,users,categories,items}) => {
+const AdminNonExistingClaim = () => {
+    const {claims ,users,categories,items}=useAppContext();
     const [nonExistingClaim,setNonExistingClaim]=useState([])
     const [isOpen,setisOpen]=useState(false)
     const [association,setAssociation]=useState(null)

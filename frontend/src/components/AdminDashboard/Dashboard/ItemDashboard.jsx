@@ -1,10 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState,useEffect } from "react";
+import { useAppContext } from "../../../AppContext";
 import AdminNavProfile from "../../Admin/AdminNavProfile";
 import ItemStatisticCard from "../StatitisticCards/ItemStatisticCard";
 import StatisticGraph from "../Zones/StatisticGraph";
-const ItemDashboard=({items,claims,categories})=>{
+const ItemDashboard=()=>{
+    const {items,claims,categories}=useAppContext();
+     
     const [mostLostCategory, setMostLostCategory] = useState('');
 
     const getTotalItems=()=> items.length;

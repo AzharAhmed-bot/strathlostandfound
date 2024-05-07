@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import NavBar from "../Navigation/NavBar";
+import { useAppContext } from "../../../AppContext";
 import {Toaster} from "react-hot-toast"
 import Footer from "../Footer";
 import Faq from "./FAQ";
 
-const AboutPage = ({reviews}) => {
-  
+const AboutPage = () => {
+  const{reviews}=useAppContext();
   return (
     <>
       <NavBar />

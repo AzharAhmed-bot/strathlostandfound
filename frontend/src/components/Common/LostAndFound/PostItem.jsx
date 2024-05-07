@@ -7,9 +7,11 @@ import NavProfile from "../../User/NavProfile";
 import AdminNavProfile from "../../Admin/AdminNavProfile";
 import { toast, Toaster } from "react-hot-toast";
 import { CgSpinner } from "react-icons/cg";
+import { useAppContext } from "../../../AppContext";
 import postingItem from "@assets/postingItem.webp";
 
-const PostItem = ({ categories }) => {
+const PostItem = () => {
+  const{categories}=useAppContext();
   const user_id =parseInt(sessionStorage.getItem("user_id"))
   const userRole = sessionStorage.getItem("role");
 

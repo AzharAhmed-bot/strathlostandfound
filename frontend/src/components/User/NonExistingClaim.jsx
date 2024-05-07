@@ -8,9 +8,11 @@ import { toast, Toaster } from "react-hot-toast";
 import { CgSpinner } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import NavProfile from "./NavProfile";
+import { useAppContext } from "../../AppContext";
 import claim from "@assets/claim.webp";
 
-export default function NonExistingClaim({ categories }) {
+export default function NonExistingClaim() {
+  const { categories }=useAppContext();
   const user_id = sessionStorage.getItem("user_id");
   const userInt=parseInt(user_id)
   

@@ -1,4 +1,4 @@
-export default function handleClaim(item,navigate,getCategoryName,getItemName,categories,toast) {
+export default function handleClaim(items,item,navigate,getCategoryName,getItemName,categories,toast) {
   if (item.Status === "Active" || item.Status === "Pending") {
     navigate("/home/claim");
 
@@ -9,9 +9,9 @@ export default function handleClaim(item,navigate,getCategoryName,getItemName,ca
     localStorage.setItem("category_name", categoryName);
 
     const itemInt = parseInt(item.id);
-    const itemNameee = getItemName(itemInt);
+    const itemName = getItemName(itemInt,items);
     localStorage.setItem("item_id", itemInt);
-    localStorage.setItem("item_name", itemNameee);
+    localStorage.setItem("item_name", itemName);
   } else {
     toast.error("This Item has already been claimed back to the owner");
   }
