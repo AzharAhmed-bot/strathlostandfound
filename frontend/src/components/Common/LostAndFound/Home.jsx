@@ -7,7 +7,7 @@ import NavBar from "../Navigation/NavBar";
 import NavProfile from "../../User/NavProfile";
 import AdminNavProfile from "../../Admin/AdminNavProfile";
 import toast, { Toaster } from "react-hot-toast";
-import handleClaim from "../../../services/Claims/handleClaim";
+import handleClaim from "../../../services/Claimshandlers/handleClaim";
 import { fetchLostAndFound } from "../../../../redux/lostandfoundSlicer";
 import { useAppContext } from "../../../AppContext";
 import { getCategoryName, getUserName, getItemName } from "../../../services/getters";

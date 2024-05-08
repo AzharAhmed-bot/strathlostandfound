@@ -1,4 +1,4 @@
-import deleteByValue from "./stateUpdaters/delete";
+import deleteByValue from "../stateUpdaters/delete";
 
 
 function handleDeleteItem(data,setItems,setClaims,toast){

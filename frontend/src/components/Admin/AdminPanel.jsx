@@ -12,10 +12,10 @@ import { useDispatch } from 'react-redux';
 import { fetchLostAndFound } from '../../../redux/lostandfoundSlicer';
 import { getCategoryName,getUserName,getUserEmail } from '../../services/getters';
 import { useAppContext } from '../../AppContext';
-import handleDeleteItem from '../../services/handleDeleteItem';
-import handleDeleteClaim from '../../services/Claims/handleDeleteClaim';
-import handleRejectClaim from '../../services/Claims/handleRejectClaim';
-import handleAdminClaim from '../../services/Claims/handleAdminClaim';
+import handleDeleteItem from '../../services/Itemshandlers/handleDeleteItem';
+import handleDeleteClaim from '../../services/Claimshandlers/handleDeleteClaim';
+import handleRejectClaim from '../../services/Claimshandlers/handleRejectClaim';
+import handleAdminClaim from '../../services/Claimshandlers/handleAdminClaim';
 
 const defaultUserImage = defaultImage; // Provide the path to your default image.
 

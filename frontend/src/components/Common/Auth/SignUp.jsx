@@ -1,4 +1,4 @@
-import handleSignUp from "../../../services/handleSignUp";
+import handleSignUp from "../../../services/authhandlers/handleSignUp";
 import content from "../../../../constants"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import content from "../../../constants";
 import { getCategoryId } from "../../services/getters";
-import handlePostNonExistingClaim from "../../services/handlePostNonExistingClaim";
+import handlePostNonExistingClaim from "../../services/Claimshandlers/handlePostNonExistingClaim";
 import { FaFileImage, FaMapMarker, FaThumbtack, FaInfo } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast";
 import { CgSpinner } from "react-icons/cg";

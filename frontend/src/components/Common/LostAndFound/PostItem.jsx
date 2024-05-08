@@ -1,7 +1,7 @@
 
 /* eslint-disable react/prop-types */
 import  { useState } from "react";
-import handlePostItem from "../../../services/handlePostItem";
+import handlePostItem from "../../../services/Itemshandlers/handlePostItem";
 import content from "../../../../constants";
 import NavProfile from "../../User/NavProfile";
 import AdminNavProfile from "../../Admin/AdminNavProfile";

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import FaqItem from './FaqItem';
 import content from '../../../../constants';
 import { toast } from 'react-hot-toast';
-import handlPostFaq from "../../../services/handlePostFaq";
+import handlPostFaq from "../../../services/faqhandlers/handlePostFaq";
 
 
 export default function Faq({reviews}) {

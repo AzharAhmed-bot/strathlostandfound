@@ -17,6 +17,7 @@ import FaqDashboard from './AdminDashboard/Dashboard/FaqDashboard';
 import AdminNonExistingClaim from './Admin/AdminNonExistingClaim';
 import { Route, Routes } from 'react-router-dom';
 import "./App.css";
+import { useMemo } from 'react';
 
 /**
  * The main App component that serves as the entry point for the application.
@@ -29,7 +30,7 @@ function App() {
 
   // User info needed in AdminPanel ,Forget and Reset Password
   // To address the potential performance issue with the routes array being recreated on every render
-  const routes = [
+  const routes = useMemo(()=>[
     { path: "/", element: <LandingPage /> },
     { path: '/login', element: <Login/> },
     { path: '/signup', element: <SignIn /> },
@@ -46,7 +47,7 @@ function App() {
     { path: "/Adminnon-existingClaim", element: <PrivateRoute><AdminNonExistingClaim /></PrivateRoute> },
     { path: '/forgot', element: <Forgot /> },
     { path: '/reset/:id', element: <ResetPassowrd /> },
-  ];
+  ],[]);
  
 
 return (

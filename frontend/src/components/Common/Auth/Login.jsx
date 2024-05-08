@@ -9,7 +9,7 @@ import NavBar from "../Navigation/NavBar";
 import { BsFillShieldLockFill } from "react-icons/bs";
 import { FaEnvelope } from "react-icons/fa";
 import {toast, Toaster} from "react-hot-toast";
-import { handleSignIn } from "../../../services/handleSignIn";
+import { handleSignIn } from "../../../services/authhandlers/handleSignIn";
 import { Link } from "react-router-dom";
 import {CgSpinner} from "react-icons/cg"
 import { useNavigate } from "react-router-dom";

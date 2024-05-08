@@ -53,7 +53,7 @@ const content = {
         semititle:"lost item.",
         icon:"/school.svg",
         subtitle:"Help Strathmore University recover lost items.",
-        buttonLabel:"Post item"
+        buttonLabel:"Post item",
     },
     faqData:{
         topper:"Frequently asked questions",

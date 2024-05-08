@@ -2,9 +2,9 @@
 import AdminNavProfile from "./AdminNavProfile";
 import content from "../../../constants";
 import {getUserName,getItemName,getCategoryName } from "../../services/getters";
-import { handleNonExistingClaim,onClose } from "../../services/Claims/handleNonExistingClaim";
-import handleNonExistingDeleteClaim from "../../services/Claims/handleNonExistingDeleteClaim";
-import handleNonExistingRejectClaim from "../../services/Claims/handleNonExistingRejectClaim";
+import { handleNonExistingClaim,onClose } from "../../services/Claimshandlers/handleNonExistingClaim";
+import handleNonExistingDeleteClaim from "../../services/Claimshandlers/handleNonExistingDeleteClaim";
+import handleNonExistingRejectClaim from "../../services/Claimshandlers/handleNonExistingRejectClaim";
 import defaultImage from "../../assets/default.webp";
 import {toast, Toaster} from "react-hot-toast";
 import {useState,useEffect} from "react";
