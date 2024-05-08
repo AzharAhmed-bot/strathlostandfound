@@ -28,4 +28,15 @@ export const getItemName = (itemId, items) => {
     const item = items && items.find((item) => item.id === itemId);
     return item ? item.name : 'Unknown name';
 };
+
+//Function to calcultate unanswered questions
+export const getUnansweredQuestions = (reviews) => reviews && reviews.filter((q)=>q.answer===null).length;
+  // Function to calculate answered questions
+export const getAnsweredQuestions=(reviews)=> reviews && reviews.filter((q)=>q.answer!==null).length;    
+  // Function to get all questions
+export const getTotalQuestions=(reviews)=>reviews.length;
+
+
+
+
   

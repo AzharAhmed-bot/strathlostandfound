@@ -6,6 +6,7 @@ import UserStatisticCard from "../StatitisticCards/UserStatisticCard";
 import UserInfo from "../Zones/UserInfo";
 import { useDispatch } from "react-redux";
 import { fetchLostAndFound } from "../../../../redux/lostandfoundSlicer";
+import updateByValue from "../../../services/stateUpdaters/update";
 
 
 const UserDashboard = () => {
@@ -33,13 +34,10 @@ const UserDashboard = () => {
 
 
   const getTotalUsers = () => users.length;
-  const getActiveUsers = () =>
-    users && users.filter((user) => user.status === "Active").length;
-  const getInactiveUsers = () =>
-    users && users.filter((user) => user.status === "Inactive").length;
+  const getActiveUsers = () => users && users.filter((user) => user.status === "Active").length;
+  const getInactiveUsers = () =>users && users.filter((user) => user.status === "Inactive").length;
 
-  const filteredUsers =
-    users && users.filter((user) => user.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredUsers =users && users.filter((user) => user.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
   const handleEditClick = (userId, currentRole, currentStatus) => {
     setEditingUserId(userId);
@@ -67,7 +65,10 @@ const UserDashboard = () => {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
+        const updatedUser=data.user;
+        const updatedUsers=updateByValue(users,updatedUser);
+        setUsers(updatedUsers);
+  
         // getUsers();
       });
 

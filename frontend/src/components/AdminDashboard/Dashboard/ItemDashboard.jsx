@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState,useEffect } from "react";
+import { getCategoryName } from "../../../services/getters";
 import { useAppContext } from "../../../AppContext";
 import AdminNavProfile from "../../Admin/AdminNavProfile";
 import ItemStatisticCard from "../StatitisticCards/ItemStatisticCard";
@@ -40,11 +41,7 @@ const ItemDashboard=()=>{
         },
         series: []  // Updated to empty array initially
       });
-       const getCategoryName=(id)=>{
-        let category=categories && categories.find((category) =>category.id===id);
-    
-        return category ? category.name :""
-       }
+      
      
     
       useEffect(() => {
@@ -55,9 +52,8 @@ const ItemDashboard=()=>{
         const lostItemsCount = uniqueDates.map((date) => itemDates.filter((d) => d === date).length);
         const uniqueCategories = Array.from(new Set(ClaimCategories));
         const claimsCout=uniqueCategories && uniqueCategories.map((cat)=>ClaimCategories.filter((c)=> c==cat).length)
-    
         const mostLostCategoryIndex = claimsCout.indexOf(Math.max(...claimsCout));
-        const mostLostCategoryName = getCategoryName(uniqueCategories[mostLostCategoryIndex]);
+        const mostLostCategoryName = getCategoryName(uniqueCategories[mostLostCategoryIndex],categories);
         setMostLostCategory(mostLostCategoryName);
     
         
@@ -78,16 +74,13 @@ const ItemDashboard=()=>{
           ]
         });
     
-        // Prepare data for the line graph based on claims category_id
-        
-        
-        
+            
         setCat({
           ...cat,
           options: {
             ...cat.options,
             xaxis:{
-                categories: uniqueCategories.map(categoryId => getCategoryName(categoryId))
+                categories: uniqueCategories.map(categoryId => getCategoryName(categoryId,categories))
             },
             yaxis: {
               categories: uniqueCategories

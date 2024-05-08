@@ -147,7 +147,7 @@ class UserBy_ID(Resource):
 
         db.session.add(user)
         db.session.commit()
-        return make_response(jsonify({"message": f"User {id}'s information updated"}), 200)
+        return make_response(jsonify({"user": user.to_dict()}), 200)
         
     def delete(self, id):
         user=User.query.filter_by(id=id).first()
