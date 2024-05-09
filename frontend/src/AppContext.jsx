@@ -6,6 +6,7 @@ import { fetchLostAndFound } from '../redux/lostandfoundSlicer';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+  const [users,setUsers]=useState([]);
   const [items, setItems] = useState([]);
   const [claims, setClaims] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -13,6 +14,11 @@ export const AppProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchLostAndFound("/userInfo")).then((itemsData) => {
+      setUsers(itemsData.payload);
+    });
+    
+
     // Fetch data from Redux and set it in the context
     dispatch(fetchLostAndFound("/lost_items")).then((itemsData) => {
       setItems(itemsData.payload);
@@ -33,7 +39,7 @@ export const AppProvider = ({ children }) => {
   }, [dispatch]);
 
   return (
-    <AppContext.Provider value={{ items, setItems, claims, setClaims, categories, setCategories, reviews, setReviews }}>
+    <AppContext.Provider value={{ items, setItems, claims, setClaims, categories, setCategories, reviews, setReviews,users}}>
       {children}
     </AppContext.Provider>
   );

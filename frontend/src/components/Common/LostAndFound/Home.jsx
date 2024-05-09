@@ -14,9 +14,7 @@ import { getCategoryName, getUserName, getItemName } from "../../../services/get
 import content from "../../../../constants";
 
 export default function Home() {
-  const{items,categories}=useAppContext();
-  const dispatch = useDispatch();
-  const [users, setUsers] = useState("");
+  const{items,categories,users}=useAppContext();
   const [searchCategory, setSearchCategory] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [filteredSearchItems, setFilteredSearchItems] = useState(null);
@@ -24,17 +22,6 @@ export default function Home() {
   const userRole = sessionStorage.getItem("role");
   const userToken=sessionStorage.getItem("token");
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const userData = await dispatch(fetchLostAndFound("/userInfo"));
-        setUsers(userData.payload);
-      } catch (error) {
-        console.error("Failed to fetch", error);
-      }
-    };
-    fetchUsers();
-  }, [dispatch]);
 
   const optionList = categories && categories.map((category) => {
     return <option key={category.id} value={category.id}>{category.name}</option>;

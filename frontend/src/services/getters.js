@@ -1,3 +1,5 @@
+
+
 export const getCategoryName = (categoryId, categories) => {
     const category = categories && categories.find((cat) => cat.id === categoryId);
     return category ? category.name : 'Unknown Category';
@@ -29,11 +31,13 @@ export const getItemName = (itemId, items) => {
     return item ? item.name : 'Unknown name';
 };
 
-//Function to calcultate unanswered questions
+//Function to calculate unanswered questions
 export const getUnansweredQuestions = (reviews) => reviews && reviews.filter((q)=>q.answer===null).length;
-  // Function to calculate answered questions
-export const getAnsweredQuestions=(reviews)=> reviews && reviews.filter((q)=>q.answer!==null).length;    
-  // Function to get all questions
+
+// Function to calculate answered questions
+export const getAnsweredQuestions=(reviews)=> reviews && reviews.filter((q)=>q.answer!==null).length;  
+
+// Function to get all questions
 export const getTotalQuestions=(reviews)=>reviews.length;
 
 
