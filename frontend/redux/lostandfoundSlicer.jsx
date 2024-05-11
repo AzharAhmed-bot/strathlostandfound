@@ -41,17 +41,6 @@ const initialState = {
 const lostAndFoundSlice = createSlice({
   name: "lostAndFound",
   initialState,
-  reducers:{
-    rejectClaim:(state,action)=>{
-      const{claimId,newData}=action.payload;
-      state.claims=state.claims.map(claim=>{
-        if(claim.id==claimId){
-          return {...claim,...newData};
-        }
-        return claim;
-      })
-    }
-  },
   extraReducers: (builder) => {
     builder.addCase(fetchLostAndFound.pending, (state) => {
       state.isLoading = true;

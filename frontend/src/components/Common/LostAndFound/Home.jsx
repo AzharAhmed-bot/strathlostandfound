@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { FaInfo, FaThumbtack, FaSearch, FaAlignLeft } from "react-icons/fa";
 import NavBar from "../Navigation/NavBar";
@@ -8,13 +7,14 @@ import NavProfile from "../../User/NavProfile";
 import AdminNavProfile from "../../Admin/AdminNavProfile";
 import toast, { Toaster } from "react-hot-toast";
 import handleClaim from "../../../services/Claimshandlers/handleClaim";
-import { fetchLostAndFound } from "../../../../redux/lostandfoundSlicer";
 import { useAppContext } from "../../../AppContext";
 import { getCategoryName, getUserName, getItemName } from "../../../services/getters";
 import content from "../../../../constants";
 
 export default function Home() {
   const{items,categories,users}=useAppContext();
+
+  
   const [searchCategory, setSearchCategory] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [filteredSearchItems, setFilteredSearchItems] = useState(null);
