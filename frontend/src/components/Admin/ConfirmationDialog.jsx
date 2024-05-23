@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import  { useState } from "react";
+import content from "../../../constants";
 
 const ConfirmationDialog = ({ isOpen, onClose ,association}) => {
   const [inputValue, setInputValue] = useState("");
@@ -45,13 +46,13 @@ const ConfirmationDialog = ({ isOpen, onClose ,association}) => {
             onClick={handleConfirm}
             className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
           >
-            Confirm
+           {content.Dialog.confirm}
           </button>
           <button
             onClick={handleCancel}
             className="bg-gray-400 text-gray-800 px-4 py-2 rounded-md"
           >
-            Cancel
+            {content.Dialog.cancel}
           </button>
         </div>
       </div>

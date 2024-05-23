@@ -16,6 +16,7 @@ import handleDeleteItem from '../../services/Itemshandlers/handleDeleteItem';
 import handleDeleteClaim from '../../services/Claimshandlers/handleDeleteClaim';
 import handleRejectClaim from '../../services/Claimshandlers/handleRejectClaim';
 import handleAdminClaim from '../../services/Claimshandlers/handleAdminClaim';
+import content from '../../../constants';
 
 const defaultUserImage = defaultImage; // Provide the path to your default image.
 
@@ -59,13 +60,13 @@ const AdminPanel = () => {
           <img src={item.image || defaultUserImage} alt={item.name} className="w-full h-full object-cover rounded-lg mb-2" />
         </div>
         <div className="w-2/3 flex flex-wrap items-center h-3/4 gap-12">
-          <div className='flex items-center gap-2'><FaIdCard/><h2 className="text-black text-lg font-medium font-inter">Lost Item ID: {item.id}</h2></div>
-          <div className='flex items-center gap-2'><FaTag /><h2 className="text-black text-lg font-medium font-inter"> Lost Item: {item.name}</h2></div>
-          <div className='flex items-center gap-2'><FaUser /><p className="text-black text-lg font-medium font-inter"> Posted By: {getUserName(item.user_id,users)}</p></div>
-          <div className='flex items-center gap-2'><FaInfoCircle /> <p className="text-black text-lg font-medium font-inter">Category: {getCategoryName(item.category_id,categories)}</p></div>
-          <div className='flex items-center gap-2'><FaMapMarkerAlt /><p className="text-black text-lg font-medium font-inter"> Location: {item.location}</p></div>
-          <div className='flex items-center gap-2'><FaCalendarAlt /><p className="text-black text-lg font-medium font-inter"> Lost Date: {item.date}</p></div>
-          <div className='flex items-center gap-2'><FaAlignLeft /><p className="text-black text-lg font-medium font-inter"> Description: {item.description}</p></div>
+          <div className='flex items-center gap-2'><FaIdCard/><h2 className="text-black text-lg font-medium font-inter">{content.AdminPanel.itemId} {item.id}</h2></div>
+          <div className='flex items-center gap-2'><FaTag /><h2 className="text-black text-lg font-medium font-inter">{content.AdminPanel.itemTitle}{item.name}</h2></div>
+          <div className='flex items-center gap-2'><FaUser /><p className="text-black text-lg font-medium font-inter">{content.AdminPanel.postTitle} {getUserName(item.user_id,users)}</p></div>
+          <div className='flex items-center gap-2'><FaInfoCircle /> <p className="text-black text-lg font-medium font-inter">{content.AdminPanel.categoryTitle} {getCategoryName(item.category_id,categories)}</p></div>
+          <div className='flex items-center gap-2'><FaMapMarkerAlt /><p className="text-black text-lg font-medium font-inter"> {content.AdminPanel.location}{item.location}</p></div>
+          <div className='flex items-center gap-2'><FaCalendarAlt /><p className="text-black text-lg font-medium font-inter"> {content.AdminPanel.dateTitle} {item.date}</p></div>
+          <div className='flex items-center gap-2'><FaAlignLeft /><p className="text-black text-lg font-medium font-inter"> {content.AdminPanel.descriptionTitle}{item.description}</p></div>
           <div className='flex items-center gap-2'>
             {item.Status === 'Active' && <FaCheckCircle className="text-green-500" />}
             {item.Status === 'Inactive' && <FaTimesCircle className="text-red-500" />}
@@ -75,7 +76,7 @@ const AdminPanel = () => {
               item.Status === 'Inactive' ? 'text-red-500' :
               'text-yellow-500'
             }`}>
-              Status: {item.Status}
+              {content.AdminPanel.status} {item.Status}
             </p>
           </div>
 
@@ -83,10 +84,10 @@ const AdminPanel = () => {
             onClick={() => handleDeleteItem(item,setItems,setClaims,toast)}
             className="bg-red-600 flex items-center gap-2 text-white rounded-md px-4 py-2 mt-2 hover:bg-red-700"
           >
-            <FaTrashAlt /> Delete Item
+            <FaTrashAlt />{content.AdminPanel.deleteItemBtn}
           </button>
           <button className='text-blue-900 text-lg font-medium font-inter flex items-center' onClick={() => handleVisibility(item)}>
-            View Claim
+          {content.AdminPanel.viewClaim}
             {claimsVisibility[item.id]? (
               <FaChevronUp className="cursor-pointer mt-2 ml-2" />
             ) : (
@@ -108,10 +109,10 @@ const AdminPanel = () => {
                 />
               </div>
               <div className="w-2/3 h-3/4 flex flex-wrap items-center gap-6">
-                <div className='flex items-center gap-2'><FaUser /><p className="text-black text-lg font-medium font-inter"> Claimed By: {getUserName(claim.user_id,users)}</p></div>
-                <div className='flex items-center gap-2'><FaInfoCircle /><p className="text-black text-lg font-medium font-inter"> Description: {claim.description_proof}</p></div>
-                <div className='flex items-center gap-2'><FaInfoCircle /> <p className="text-black text-lg font-medium font-inter">Category: {getCategoryName(claim.category_id)}</p></div>
-                <div className='flex items-center gap-2'><FaMapMarkerAlt /><p className="text-black text-lg font-medium font-inter"> Location: {claim.location}</p></div>
+                <div className='flex items-center gap-2'><FaUser /><p className="text-black text-lg font-medium font-inter"> {content.AdminPanel.claimTitle} {getUserName(claim.user_id,users)}</p></div>
+                <div className='flex items-center gap-2'><FaInfoCircle /><p className="text-black text-lg font-medium font-inter"> {content.AdminPanel.descriptionTitle}{claim.description_proof}</p></div>
+                <div className='flex items-center gap-2'><FaInfoCircle /> <p className="text-black text-lg font-medium font-inter">{content.AdminPanel.categoryTitle} {getCategoryName(claim.category_id)}</p></div>
+                <div className='flex items-center gap-2'><FaMapMarkerAlt /><p className="text-black text-lg font-medium font-inter"> {content.AdminPanel.location}{claim.location}</p></div>
                 <div className='flex items-center gap-2'>
                   {claim.Status === 'Active' && <FaCheckCircle className="text-green-500" />}
                   {claim.Status === 'Inactive' && <FaTimesCircle className="text-red-500" />}
@@ -121,7 +122,7 @@ const AdminPanel = () => {
                     claim.Status === 'Inactive' ? 'text-red-500' :
                     'text-yellow-500'
                   }`}>
-                    Status: {claim.Status}
+                    {content.AdminPanel.status}{claim.Status}
                   </p>
                 </div>
                 <button
@@ -129,21 +130,21 @@ const AdminPanel = () => {
                   className="bg-gray-600 text-white rounded-md px-4 py-2 mt-2 hover:bg-gray-700 flex items-center gap-4"
                 >
                   <FaCheckCircle/>
-                  Mark as Claimed
+                  {content.AdminPanel.claimButton}
                 </button>
                 <button
                   onClick={() => handleRejectClaim(claim,claims,setClaims,toast)}
                   className="bg-yellow-600 hover:bg-yellow-500 pl-8 text-white rounded-md px-4 py-2 mt-2 flex items-center gap-4 "
                 >
                   <MdCancel/>
-                  Reject Claim
+                  {content.AdminPanel.rejectButton}
                 </button>
                 <button
                   onClick={() => handleDeleteClaim(claim,setClaims,toast)}
                   className="bg-red-600 hover:bg-red-500 pl-8 text-white rounded-md px-4 py-2 mt-2 flex items-center gap-4 "
                 >
                   <FaTrashAlt/>
-                  Delete Claim
+                  {content.AdminPanel.deleteClaim}
                 </button>
               </div>
             </div>

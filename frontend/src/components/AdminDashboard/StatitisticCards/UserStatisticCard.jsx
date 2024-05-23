@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import content from '../../../../constants';
 import { FaUsers, FaUserCheck, FaUserTimes } from 'react-icons/fa';
 
 export default function UserStatisticCard({ getTotalUsers, getActiveUsers, getInactiveUsers }) {
@@ -12,7 +12,7 @@ export default function UserStatisticCard({ getTotalUsers, getActiveUsers, getIn
                             <FaUsers size={24} />
                         </div>
                         <div>
-                            <div className="font-bold text-xl mb-2">Total Users</div>
+                            <div className="font-bold text-xl mb-2">{content.userStatitic.totalUser}</div>
                             <p className="text-base">{getTotalUsers()}</p>
                         </div>
                     </div>
@@ -27,7 +27,7 @@ export default function UserStatisticCard({ getTotalUsers, getActiveUsers, getIn
                             <FaUserCheck size={24} />
                         </div>
                         <div>
-                            <div className="font-bold text-xl mb-2">Active Users</div>
+                            <div className="font-bold text-xl mb-2">{content.userStatitic.activeUser}</div>
                             <p className="text-base">{getActiveUsers()}</p>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ export default function UserStatisticCard({ getTotalUsers, getActiveUsers, getIn
                             <FaUserTimes size={24} />
                         </div>
                         <div>
-                            <div className="font-bold text-xl mb-2">Inactive Users</div>
+                            <div className="font-bold text-xl mb-2">{content.userStatitic.inactiveUser}</div>
                             <p className="text-base">{getInactiveUsers()}</p>
                         </div>
                     </div>

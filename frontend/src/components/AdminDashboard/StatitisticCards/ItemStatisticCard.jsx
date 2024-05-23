@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 
 import { FaExclamationCircle, FaFileAlt } from 'react-icons/fa';
+import content from '../../../../constants';
 
 export default function ItemStatisticCard({ getTotalItems, mostLostCategory, getTotalClaims }) {
     return (
@@ -13,7 +13,7 @@ export default function ItemStatisticCard({ getTotalItems, mostLostCategory, get
                             <FaExclamationCircle size={24} />
                         </div>
                         <div>
-                            <div className="font-bold text-xl mb-2">All Lost Items</div>
+                            <div className="font-bold text-xl mb-2">{content.itemStatistic.allLostItem}</div>
                             <p className="text-base">{getTotalItems()}</p>
                         </div>
                     </div>
@@ -28,7 +28,7 @@ export default function ItemStatisticCard({ getTotalItems, mostLostCategory, get
                             {/* Replace the icon with the appropriate one */}
                         </div>
                         <div>
-                            <div className="font-bold text-xl mb-2">Most Lost Item Category</div>
+                            <div className="font-bold text-xl mb-2">{content.itemStatistic.mostLostCategory}</div>
                             <p className="text-base">{mostLostCategory}</p>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ export default function ItemStatisticCard({ getTotalItems, mostLostCategory, get
                             <FaFileAlt size={24} />
                         </div>
                         <div>
-                            <div className="font-bold text-xl mb-2">Total Claims</div>
+                            <div className="font-bold text-xl mb-2">{content.itemStatistic.totalClaims}</div>
                             <p className="text-base">{getTotalClaims()}</p>
                         </div>
                     </div>

@@ -155,8 +155,35 @@ const content = {
       descriptionTitle:"Description: ",
       categoryTitle:"Category: ",
       dateTitle:"Lost date: ",
-      locationDate:"Location: "
+      location:"Location: ",
+      status:"Status: ",
+      deleteItemBtn:"Delete item",
+      viewClaim:"View Claim",
+      claimTitle:"Claimed by: ",
+      claimButton:"Mart as Claimed",
+      rejectButton:"Reject Claim",
+      deleteClaim:"Delete Claim",
+    },
+    Dialog:{
+      confirm:"Confirm",
+      cancel:"Cancel",
+    },
+    faqStatistic:{
+      totalQuestion:"Total Questions ",
+      unansweredQuestion:"Unanswered Questions",
+      answeredQuestion:"Answered Questions",
+    },
+    itemStatistic:{
+      allLostItem:"All Lost Items",
+      mostLostCategory:"Most Lost Item Category",
+      totalClaims:"Total Claims"
+    },
+    userStatitic:{
+      totalUser:"Total Users",
+      activeUser:"Active Users",
+      inactiveUser:"Inactive Users"
     }
+
 
   };
   
