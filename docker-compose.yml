@@ -1,16 +1,16 @@
 services:
   backend:
     build:
-      context: .
-      dockerfile: dockerfile.api
+      context: ./backend
+      dockerfile: Dockerfile.api
     ports:
       - "5000:5000" 
 
 
   frontend:
     build:
-      context: .
-      dockerfile: dockerfile.web
+      context: ./frontend
+      dockerfile: Dockerfile.client
     ports:
       - "5173:5173"
 

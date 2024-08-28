@@ -14,5 +14,5 @@ RUN npm install --force
 
 EXPOSE 5173
 
-CMD ["npm", "start:frontend", "--", "--host", "0.0.0.0"]
+CMD ["npm","run", "start:frontend", "--", "--host", "0.0.0.0"]
 
