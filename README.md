@@ -31,7 +31,19 @@ git clone https://github.com/your-username/strathlostandfound.git
 ```bash
 cd strathlostandfound/frontend
 ```
-4. Now there are two ways to get the application in your local machine:
+4. Then install the dependencies for the react frontend:
+```bash
+cd frontend
+npm i
+```
+5. Now to install the backend I'm using pipenv:
+ ```bash
+cd backend # run this to enter the backend dir
+pipenv shell # run this to go to python virtual env
+pipenv install # run this to get the backend dependencies installed
+
+```
+7. Now there are two ways to get the application in your local machine:
  - Run both backend and frontend concurrently
    ```bash
    npm run dev
