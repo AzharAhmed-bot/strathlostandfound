@@ -43,6 +43,7 @@ pipenv shell # run this to go to python virtual env
 pipenv install # run this to get the backend dependencies installed
 
 ```
+6. Please if your using any other dependency package managers, please leave an issue and I'll assist on a 1v1 session
 7. Now there are two ways to get the application in your local machine:
  - Run both backend and frontend concurrently
    ```bash
