@@ -1,8 +1,9 @@
 ![strathmoreLogotwo](https://github.com/AzharAhmed-bot/strathlostandfound/assets/126657393/2ff17ab2-6268-43a2-87b0-5606b35fd7ab)
 # Strathmore Lost and Found System
 <h3>Hey there ✨! Welcome to the Strathmore Lost and Found System, your go-to hub for reuniting lost items with their owners. Our open-source repository fosters a collaborative spirit, empowering users  to contribute to the collective effort of restoring lost connections.</h3><br/>
-<h4>We facilitate the swift and seamless return of lost items to their rightful owners, fostering a sense of community and connection.</h4>
-
+<h2>I've recently noticed that individuals are having a problem getting the app started. Please note that I havent touched the application in 2 years so most of the dependecies are out of date. If you need help on how to run it please leave an issue. I'll be able to assist you with it </h2>
+ 
+<br/>
 
 ![Screenshot 2024-04-28 192103](https://github.com/AzharAhmed-bot/strathlostandfound/assets/126657393/0ef4f727-cfdf-43d4-a7f8-fca63fa23235)
 
